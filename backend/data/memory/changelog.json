@@ -1,0 +1,1411 @@
+{
+  "key": "changelog",
+  "content": [
+    {
+      "taskId": "6c9c42db-d73f-4ca5-a25a-1d013812b2a6",
+      "desc": "/auto-commit-pr",
+      "cost": 1.0074435,
+      "duration": 38028,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775873520777
+    },
+    {
+      "taskId": "692b4452-c36d-44b3-b015-4320b46d7019",
+      "desc": "Analise pkg/providers/ do openclaw. Identifique providers com padrões inconsistentes. Lista priorizada.",
+      "cost": 1.5340445999999999,
+      "duration": 151945,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775875376681
+    },
+    {
+      "taskId": "193cb1d8-fd54-486c-b8ea-c3eaac2fa573",
+      "desc": "/auto-commit-pr",
+      "cost": 1.1400825,
+      "duration": 38837,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775875415726
+    },
+    {
+      "taskId": "18e3be1c-f85b-468e-9a60-322f000f6790",
+      "desc": "Verifique os agentes em /Users/2a/.claude/agents/. Liste os mais relevantes para melhorar o openclaw-mythos.",
+      "cost": 0.9066118499999999,
+      "duration": 41408,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775877066058
+    },
+    {
+      "taskId": "6038eafe-bb40-422d-9158-1318cc8b7d56",
+      "desc": "/auto-commit-pr",
+      "cost": 1.1501040000000002,
+      "duration": 35324,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775877101483
+    },
+    {
+      "taskId": "b43ce307-f0fe-4354-957c-be084e5e0fb1",
+      "desc": "/analyze-logs",
+      "cost": 1.0686255,
+      "duration": 41028,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775878865948
+    },
+    {
+      "taskId": "44a9503c-748e-46fd-bce5-dbc70438bc6c",
+      "desc": "/auto-commit-pr",
+      "cost": 1.0422224999999998,
+      "duration": 35926,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775879243558
+    },
+    {
+      "taskId": "1422d3c7-ab64-41b4-9f11-2c46814f543c",
+      "desc": "Leia os logs em /Users/2a/.openclaw/logs/ e sugira melhorias concretas no código Go para reduzir os erros encontrados.",
+      "cost": 0.9425677499999999,
+      "duration": 30508,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775880655171
+    },
+    {
+      "taskId": "bcaf889a-58d2-4697-abaa-870f1e64ed58",
+      "desc": "/auto-commit-pr",
+      "cost": 1.2787687500000002,
+      "duration": 31876,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775880687127
+    },
+    {
+      "taskId": "2bd22f10-54ef-499f-ae43-07a079b12f86",
+      "desc": "Leia data/memory/debts.json. Escolha o debt aberto de maior severidade. Corrija-o editando o arquivo indicado. Após corr",
+      "cost": 1.80117225,
+      "duration": 76398,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775882500995
+    },
+    {
+      "taskId": "7564b91a-d983-47b8-a5e3-885b9c65caa5",
+      "desc": "/auto-commit-pr",
+      "cost": 1.28052,
+      "duration": 31341,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775882532410
+    },
+    {
+      "taskId": "38390600-6e85-46b5-b203-1e8b94a6424f",
+      "desc": "Leia ROADMAP.md e compare com o código atual. Liste: implementado, parcial, pendente.",
+      "cost": 0.9815707499999999,
+      "duration": 30553,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775884255196
+    },
+    {
+      "taskId": "e74243b7-6608-48f3-81e6-190d62f9631a",
+      "desc": "/auto-commit-pr",
+      "cost": 1.34469825,
+      "duration": 32810,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775884288092
+    },
+    {
+      "taskId": "546487a8-e940-43e1-9e25-9597b1fcdd05",
+      "desc": "/self-review",
+      "cost": 1.7730045,
+      "duration": 46282,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775886071180
+    },
+    {
+      "taskId": "97f41902-a789-421e-a868-84917ea76980",
+      "desc": "/auto-commit-pr",
+      "cost": 0.5196465000000001,
+      "duration": 35502,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775886106771
+    },
+    {
+      "taskId": "0334271e-3a8f-4acc-8303-77a9377dbc44",
+      "desc": "Leia ROADMAP.md e compare com o código atual. Liste: implementado, parcial, pendente.",
+      "cost": 1.8727612500000002,
+      "duration": 42349,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775887867491
+    },
+    {
+      "taskId": "184585cd-e442-447e-8b29-195753c054bd",
+      "desc": "/auto-commit-pr",
+      "cost": 0.7862805,
+      "duration": 33341,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775887900923
+    },
+    {
+      "taskId": "57cfc052-5aa3-45fa-aca8-e31cf7581c9a",
+      "desc": "/analyze-logs",
+      "cost": 1.1372437499999999,
+      "duration": 44789,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775889669573
+    },
+    {
+      "taskId": "5979252c-0e5c-4604-b327-0c42f4ce4989",
+      "desc": "/auto-commit-pr",
+      "cost": 1.0056862500000001,
+      "duration": 34581,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775889704231
+    },
+    {
+      "taskId": "711615d3-2856-48a5-b973-ad7b4e1f28ae",
+      "desc": "/eval-skills",
+      "cost": 1.67265675,
+      "duration": 66756,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775891491383
+    },
+    {
+      "taskId": "c1d829ba-b58e-4654-acaf-7ffc627b9f04",
+      "desc": "/auto-commit-pr",
+      "cost": 0.45126225000000003,
+      "duration": 31224,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775891522687
+    },
+    {
+      "taskId": "289b083f-b8fe-4a0b-9da4-eb54d9b447c0",
+      "desc": "Analise pkg/providers/ do openclaw. Identifique providers com padrões inconsistentes. Lista priorizada.",
+      "cost": 1.45202385,
+      "duration": 139599,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775893364341
+    },
+    {
+      "taskId": "1fd37d37-d584-41aa-9f61-d3ad9f9a6528",
+      "desc": "/auto-commit-pr",
+      "cost": 0.6084225,
+      "duration": 35972,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775893400395
+    },
+    {
+      "taskId": "466523a5-c690-4698-92da-c5ec748745ad",
+      "desc": "Leia ROADMAP.md e compare com o código atual. Liste: implementado, parcial, pendente.",
+      "cost": 1.6719742499999999,
+      "duration": 42885,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775895067832
+    },
+    {
+      "taskId": "8f1676fc-6312-4e3e-8b0e-526c75940840",
+      "desc": "/auto-commit-pr",
+      "cost": 0.9808319999999999,
+      "duration": 31572,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775895099495
+    },
+    {
+      "taskId": "fbcb1c7d-90e1-49e0-9162-c33fae69a795",
+      "desc": "Leia data/memory/debts.json. Se todos os debts estão \"resolved\", analise o código e adicione NOVOS débitos técnicos que ",
+      "cost": 2.3502982500000003,
+      "duration": 61391,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775896886208
+    },
+    {
+      "taskId": "d2436287-0c19-4623-93dc-4bc1b4731143",
+      "desc": "/auto-commit-pr",
+      "cost": 0.51859575,
+      "duration": 32332,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775896918612
+    },
+    {
+      "taskId": "74385bb9-285a-4881-a747-79179d2698ad",
+      "desc": "Leia os logs em /Users/2a/.openclaw/logs/ e sugira melhorias concretas no código Go para reduzir os erros encontrados.",
+      "cost": 0.8887455,
+      "duration": 30779,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775898655416
+    },
+    {
+      "taskId": "07456bc7-4de7-4f77-84c0-9434dc837ee7",
+      "desc": "/auto-commit-pr",
+      "cost": 1.014366,
+      "duration": 31152,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775898686656
+    },
+    {
+      "taskId": "f99e0304-149a-4881-ac5b-682ee87ee9a7",
+      "desc": "Analise pkg/providers/ do openclaw. Identifique providers com padrões inconsistentes. Lista priorizada.",
+      "cost": 1.2590287500000001,
+      "duration": 88639,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775900514035
+    },
+    {
+      "taskId": "4a355ca5-d175-4dd9-b590-c11e2f81335b",
+      "desc": "/auto-commit-pr",
+      "cost": 0.48953775,
+      "duration": 42947,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775900557146
+    },
+    {
+      "taskId": "73081cac-f9dc-44c0-97d9-278abc86c7a2",
+      "desc": "Verifique os agentes em /Users/2a/.claude/agents/. Liste os mais relevantes para melhorar o openclaw-mythos.",
+      "cost": 1.3009094999999997,
+      "duration": 109562,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775902334285
+    },
+    {
+      "taskId": "a1fd1f77-680c-4177-84b5-a020e1b4cc6d",
+      "desc": "/auto-commit-pr",
+      "cost": 0.5312497500000001,
+      "duration": 40097,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775902374504
+    },
+    {
+      "taskId": "3de983ae-87e6-43ec-bec3-3ae16cf3ceb5",
+      "desc": "/analyze-logs",
+      "cost": 0.943839,
+      "duration": 34945,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775904059651
+    },
+    {
+      "taskId": "b89af832-c207-4324-8b97-a85e18e7cd90",
+      "desc": "/auto-commit-pr",
+      "cost": 0.9982725000000001,
+      "duration": 31218,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775904090970
+    },
+    {
+      "taskId": "ee57b915-a181-4930-a230-1ea2d73453e3",
+      "desc": "Leia os logs em /Users/2a/.openclaw/logs/ e sugira melhorias concretas no código Go para reduzir os erros encontrados.",
+      "cost": 0.9526334999999999,
+      "duration": 32932,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775905858081
+    },
+    {
+      "taskId": "30e412b0-f18b-4f47-8419-343c51020dd5",
+      "desc": "/auto-commit-pr",
+      "cost": 1.3888522500000002,
+      "duration": 43709,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775905901889
+    },
+    {
+      "taskId": "f7c675f6-efda-47ca-9d2f-8a0f9f9e5fa9",
+      "desc": "Leia data/memory/debts.json. Escolha o debt aberto de maior severidade. Corrija-o editando o arquivo indicado. Após corr",
+      "cost": 1.4817915000000002,
+      "duration": 61246,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775907686287
+    },
+    {
+      "taskId": "aa979a66-9a57-4184-bd33-4fd2dbe738e1",
+      "desc": "/auto-commit-pr",
+      "cost": 1.0133280000000002,
+      "duration": 43615,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775907730372
+    },
+    {
+      "taskId": "e8e2af67-542c-4918-a9a8-e11541db20f8",
+      "desc": "Leia ROADMAP.md e compare com o código atual. Liste: implementado, parcial, pendente.",
+      "cost": 1.9360459499999998,
+      "duration": 127795,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775909553233
+    },
+    {
+      "taskId": "9b56751f-1629-4d32-baab-44e04ef40059",
+      "desc": "/auto-commit-pr",
+      "cost": 1.2803805000000001,
+      "duration": 54118,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775909607979
+    },
+    {
+      "taskId": "f725f5f6-06e0-45db-a463-d620c9ed408b",
+      "desc": "/self-review",
+      "cost": 1.6502857499999999,
+      "duration": 51754,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775911278074
+    },
+    {
+      "taskId": "e68866e9-e355-45eb-8db7-fa73e8e44c87",
+      "desc": "/auto-commit-pr",
+      "cost": 1.06872975,
+      "duration": 51634,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775911330411
+    },
+    {
+      "taskId": "322331f0-7eee-40c0-9488-ed3a5b66d613",
+      "desc": "Leia ROADMAP.md e compare com o código atual. Liste: implementado, parcial, pendente.",
+      "cost": 1.60308525,
+      "duration": 42402,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775913067270
+    },
+    {
+      "taskId": "78b5148f-9836-42c4-8233-530f74848b92",
+      "desc": "/auto-commit-pr",
+      "cost": 1.05507225,
+      "duration": 36826,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775913104175
+    },
+    {
+      "taskId": "b636fc18-fd16-4b07-8418-1d64ecc14b5f",
+      "desc": "/analyze-logs",
+      "cost": 1.8693318,
+      "duration": 169185,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775914994520
+    },
+    {
+      "taskId": "93225dcc-763e-44c1-b0ff-bcfdc8b01fe3",
+      "desc": "/auto-commit-pr",
+      "cost": 0.9892087499999999,
+      "duration": 32168,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775915026862
+    },
+    {
+      "taskId": "ae630056-99b9-438b-877c-e98c82146424",
+      "desc": "/eval-skills",
+      "cost": 1.51848525,
+      "duration": 59182,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775916684393
+    },
+    {
+      "taskId": "7566c06a-79f1-4387-9d5a-0a3340ebde54",
+      "desc": "/auto-commit-pr",
+      "cost": 1.0804935,
+      "duration": 46720,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775916731464
+    },
+    {
+      "taskId": "ca9ce0ef-f5b1-4de4-a806-90e27f112af4",
+      "desc": "Analise pkg/providers/ do openclaw. Identifique providers com padrões inconsistentes. Lista priorizada.",
+      "cost": 1.4000770499999995,
+      "duration": 151807,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775918576591
+    },
+    {
+      "taskId": "3e5a157e-5946-405e-8026-5fe48ce26f78",
+      "desc": "/auto-commit-pr",
+      "cost": 0.9995970000000001,
+      "duration": 34034,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775918610748
+    },
+    {
+      "taskId": "ed789157-1bb7-410f-9bd5-12b71c983445",
+      "desc": "Leia ROADMAP.md e compare com o código atual. Liste: implementado, parcial, pendente.",
+      "cost": 1.7940832499999995,
+      "duration": 126253,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775920351051
+    },
+    {
+      "taskId": "66cfb7cd-b9a7-4fe2-8a17-e9fd601ecf3d",
+      "desc": "/auto-commit-pr",
+      "cost": 0.46420125,
+      "duration": 35047,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775920386194
+    },
+    {
+      "taskId": "ac1a9212-5687-4a08-bf04-8b8845ca3779",
+      "desc": "Leia data/memory/debts.json. Se todos os debts estão \"resolved\", analise o código e adicione NOVOS débitos técnicos que ",
+      "cost": 1.7174092499999998,
+      "duration": 48604,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775922073759
+    },
+    {
+      "taskId": "6161bf58-2efe-494a-9eb1-e3d9be430553",
+      "desc": "/self-review",
+      "cost": 1.5523965,
+      "duration": 50292,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775923018691
+    },
+    {
+      "taskId": "86cdd684-05d8-4561-857e-6c4f8376728a",
+      "desc": "/self-review",
+      "cost": 1.6695765000000002,
+      "duration": 42364,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775924772050
+    },
+    {
+      "taskId": "8923ab75-b6c3-4751-ab62-3707d5392e5b",
+      "desc": "/auto-commit-pr",
+      "cost": 1.0785719999999999,
+      "duration": 35516,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775924836681
+    },
+    {
+      "taskId": "7a21ecb4-072d-40e4-a995-ed420f55e90c",
+      "desc": "/self-review",
+      "cost": 1.5390224999999997,
+      "duration": 37608,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775925537218
+    },
+    {
+      "taskId": "ac30ff00-754b-45e5-a9a6-190340271ff0",
+      "desc": "/auto-commit-pr",
+      "cost": 1.08675525,
+      "duration": 39973,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775925577259
+    },
+    {
+      "taskId": "0b2d966f-fce3-42bc-afd6-4bde34d9d75c",
+      "desc": "/self-review",
+      "cost": 1.953876,
+      "duration": 53687,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775925932697
+    },
+    {
+      "taskId": "c842ac3f-fb59-4f3f-b604-c82e1855237d",
+      "desc": "/auto-commit-pr",
+      "cost": 0.514755,
+      "duration": 34797,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775925967591
+    },
+    {
+      "taskId": "c8e34664-a7db-4ea5-bbe4-d445e6c44c91",
+      "desc": "Leia ROADMAP.md e compare com o código atual. Liste: implementado, parcial, pendente.",
+      "cost": 0.9047729999999999,
+      "duration": 29748,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775927709719
+    },
+    {
+      "taskId": "b67eca37-80cd-43e6-8f79-7dc500587c7a",
+      "desc": "/auto-commit-pr",
+      "cost": 1.0682242499999999,
+      "duration": 44727,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775927754765
+    },
+    {
+      "taskId": "60bf6992-21b0-41f4-8d77-775292728b03",
+      "desc": "/self-review",
+      "cost": 1.8065774999999997,
+      "duration": 44191,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775928321080
+    },
+    {
+      "taskId": "8177e4c8-4cd4-4e65-a0cc-50258f4a9c00",
+      "desc": "/auto-commit-pr",
+      "cost": 1.15222875,
+      "duration": 31847,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775928353029
+    },
+    {
+      "taskId": "047542af-6200-4388-a9e2-3aecf287d1cf",
+      "desc": "Leia ROADMAP.md e compare com o código atual. Liste: implementado, parcial, pendente.",
+      "cost": 1.04584875,
+      "duration": 121324,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775930200414
+    },
+    {
+      "taskId": "d331f6b3-7e81-49ae-b02c-8c01b0836c9d",
+      "desc": "/auto-commit-pr",
+      "cost": 1.127574,
+      "duration": 41057,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775930241768
+    },
+    {
+      "taskId": "cf1c4a27-b578-49cd-8b63-e136d03969b5",
+      "desc": "/self-review",
+      "cost": 1.7801205,
+      "duration": 47794,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775932159700
+    },
+    {
+      "taskId": "9514bb1b-944d-4bfa-9bdf-5e4d4139181a",
+      "desc": "/auto-commit-pr",
+      "cost": 0.46073925000000004,
+      "duration": 44014,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775932249061
+    },
+    {
+      "taskId": "08d1d2ab-072a-434d-8e15-6efd04d2f122",
+      "desc": "Leia ROADMAP.md e compare com o código atual. Liste: implementado, parcial, pendente.",
+      "cost": 1.7902304999999998,
+      "duration": 49782,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775933961896
+    },
+    {
+      "taskId": "ad61e6d5-fadd-4654-9068-1d4f8758e1e5",
+      "desc": "/auto-commit-pr",
+      "cost": 0.995691,
+      "duration": 33529,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775933995672
+    },
+    {
+      "taskId": "b15fba37-3b1e-4066-bc9b-3774ccc051c8",
+      "desc": "Analise pkg/providers/ do openclaw. Identifique providers com padrões inconsistentes. Lista priorizada.",
+      "cost": 1.3945813500000002,
+      "duration": 101973,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775946614535
+    },
+    {
+      "taskId": "3858bc0c-9931-4ba3-acf8-fa79fb16b952",
+      "desc": "/auto-commit-pr",
+      "cost": 0.51207,
+      "duration": 37332,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775946652014
+    },
+    {
+      "taskId": "7d9a5415-748f-4587-84dd-423ca77aca36",
+      "desc": "Verifique os agentes em /Users/2a/.claude/agents/. Liste os mais relevantes para melhorar o openclaw-mythos.",
+      "cost": 1.5604065,
+      "duration": 62837,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775948375215
+    },
+    {
+      "taskId": "af74ea15-450b-432d-ab06-073d0db97f84",
+      "desc": "/auto-commit-pr",
+      "cost": 1.02234,
+      "duration": 33973,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775948409313
+    },
+    {
+      "taskId": "3df95075-74f2-4f2a-8413-1fb7c02e23b6",
+      "desc": "/analyze-logs",
+      "cost": 1.0184317500000002,
+      "duration": 36466,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775950148910
+    },
+    {
+      "taskId": "91ba09a4-a71c-4026-85d6-7f09249ec70d",
+      "desc": "/auto-commit-pr",
+      "cost": 1.350876,
+      "duration": 35135,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775950184148
+    },
+    {
+      "taskId": "a7b65aa8-0bcf-45d5-8961-4988b240cb52",
+      "desc": "Leia os logs em /Users/2a/.openclaw/logs/ e sugira melhorias concretas no código Go para reduzir os erros encontrados.",
+      "cost": 0.9469065,
+      "duration": 28308,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775952030371
+    },
+    {
+      "taskId": "73fa963e-ec90-45e4-8e68-a19db5b6cad9",
+      "desc": "/auto-commit-pr",
+      "cost": 0.99707175,
+      "duration": 30282,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775952060747
+    },
+    {
+      "taskId": "5a7a90e7-8078-4ff8-aa94-4570a7cc0d34",
+      "desc": "Leia data/memory/debts.json. Escolha o debt aberto de maior severidade. Corrija-o editando o arquivo indicado. Após corr",
+      "cost": 1.8911475000000002,
+      "duration": 67948,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/memory/debts.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/health-checker.js",
+        "backend/services/task-runner.js",
+        "backend/sessionContext.js"
+      ],
+      "at": 1775953780947
+    },
+    {
+      "taskId": "797393c2-77c5-474e-8b45-9a7e48f0b07d",
+      "desc": "/auto-commit-pr",
+      "cost": 1.2370694999999998,
+      "duration": 43724,
+      "changes": [
+        "backend/data/tasks.json"
+      ],
+      "at": 1775953824905
+    },
+    {
+      "taskId": "729abdd1-b874-4081-b195-7a597ce8d191",
+      "desc": "Analise pkg/providers/ do openclaw. Identifique providers com padrões inconsistentes. Lista priorizada.",
+      "cost": 1.28339025,
+      "duration": 98496,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json"
+      ],
+      "at": 1775964611248
+    },
+    {
+      "taskId": "c861bb7e-1620-4f80-bb3d-3b9f2cabe261",
+      "desc": "/auto-commit-pr",
+      "cost": 0.7583880000000001,
+      "duration": 39172,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json"
+      ],
+      "at": 1775964650553
+    },
+    {
+      "taskId": "0d8a6329-a400-4e46-bbc0-b24808ce6a2d",
+      "desc": "Leia ROADMAP.md e compare com o código atual. Liste: implementado, parcial, pendente.",
+      "cost": 1.0641045,
+      "duration": 38149,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json"
+      ],
+      "at": 1775966350448
+    },
+    {
+      "taskId": "27978fff-f8f5-46b0-bb35-ff93c7ba8c8a",
+      "desc": "/auto-commit-pr",
+      "cost": 1.219221,
+      "duration": 38857,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json"
+      ],
+      "at": 1775966389469
+    },
+    {
+      "taskId": "afead502-ecd9-4790-a8a8-5f8095c38339",
+      "desc": "/self-review",
+      "cost": 1.7923147499999998,
+      "duration": 38547,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json"
+      ],
+      "at": 1775981326210
+    },
+    {
+      "taskId": "c939bac9-f5fb-4b94-9144-2b132c1fc782",
+      "desc": "/auto-commit-pr",
+      "cost": 1.3349504999999997,
+      "duration": 35859,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json"
+      ],
+      "at": 1775981362151
+    },
+    {
+      "taskId": "63d7ee9e-c45b-4d7d-a2a1-cdf4419b123d",
+      "desc": "/self-review",
+      "cost": 1.67594625,
+      "duration": 36959,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json",
+        "backend/server.js"
+      ],
+      "at": 1775982811315
+    },
+    {
+      "taskId": "a203ff71-eb57-43a1-a2ee-b66f6360a919",
+      "desc": "/self-review",
+      "cost": 1.8405855000000002,
+      "duration": 39923,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json",
+        "backend/server.js",
+        "backend/services/task-runner.js"
+      ],
+      "at": 1775987100753
+    },
+    {
+      "taskId": "66f701ad-115d-41e1-b980-e7007c823d6c",
+      "desc": "/auto-commit-pr",
+      "cost": null,
+      "duration": 89010,
+      "changes": [
+        "backend/data/tasks.json"
+      ],
+      "at": 1775987338400
+    },
+    {
+      "taskId": "a64f074a-8cff-414b-b3b5-5016656f76f6",
+      "desc": "/self-review",
+      "cost": null,
+      "duration": 89987,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json"
+      ],
+      "at": 1775987428482
+    },
+    {
+      "taskId": "e2052451-6d57-4539-82ce-5d9887266fa3",
+      "desc": "/auto-commit-pr",
+      "cost": 0.31927324999999995,
+      "duration": 47565,
+      "changes": [
+        "backend/data/tasks.json"
+      ],
+      "at": 1775987476113
+    },
+    {
+      "taskId": "e259ae85-5e0d-4a31-ac6c-0687c5bc5837",
+      "desc": "/self-review",
+      "cost": 0.83748925,
+      "duration": 168510,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json"
+      ],
+      "at": 1775987763763
+    },
+    {
+      "taskId": "a0e81539-38ae-4b47-aceb-e724db762956",
+      "desc": "/auto-commit-pr",
+      "cost": 0.18277125,
+      "duration": 158937,
+      "changes": [
+        "backend/data/tasks.json"
+      ],
+      "at": 1775987926392
+    },
+    {
+      "taskId": "ce661e9d-3938-47a4-82cb-87a7373985af",
+      "desc": "Leia ROADMAP.md e compare com o código atual. Liste: implementado, parcial, pendente.",
+      "cost": 0.2807195,
+      "duration": 97453,
+      "changes": [
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json"
+      ],
+      "at": 1775989671081
+    },
+    {
+      "taskId": "ccf5523a-ead3-438a-9017-35cf55ff0180",
+      "desc": "/auto-commit-pr",
+      "cost": 0.37268025000000005,
+      "duration": 78493,
+      "changes": [
+        "backend/data/tasks.json"
+      ],
+      "at": 1775990556409
+    },
+    {
+      "taskId": "4df58135-6bb5-4511-9536-9b1a79da14db",
+      "desc": "/self-review",
+      "cost": 0.6796305,
+      "duration": 122188,
+      "changes": [
+        "backend/.env",
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json"
+      ],
+      "at": 1775991341583
+    },
+    {
+      "taskId": "a0ec0b91-c643-41b1-80c1-a03350430de6",
+      "desc": "/self-review",
+      "cost": null,
+      "duration": 87616,
+      "changes": [
+        "backend/.env",
+        "backend/data/memory/changelog.json",
+        "backend/data/tasks.json"
+      ],
+      "at": 1775991430093
+    },
+    {
+      "taskId": "f6703bb2-9b39-4252-b3f1-1d4941aefab1",
+      "desc": "/self-review",
+      "cost": 0.47118825000000003,
+      "duration": 83655,
+      "at": 1777926608648
+    },
+    {
+      "taskId": "46576eb9-ea92-414d-b401-3610074bc6b6",
+      "desc": "/self-review",
+      "cost": 0.5267475,
+      "duration": 86414,
+      "at": 1777928221513
+    }
+  ],
+  "sha256": "990a2ab743222da9",
+  "updatedAt": 1777928221514
+}

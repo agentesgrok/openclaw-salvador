@@ -1,0 +1,43 @@
+[
+  {
+    "id": "53cf0588-33cf-4a5b-8c59-ec4d23db90d9",
+    "prompt": "/self-review",
+    "workspace": "/home/jarvis/openclaw-mythos-jarvis/backend",
+    "systemPrompt": null,
+    "maxTurns": 15,
+    "model": null,
+    "tags": [
+      "autonomous",
+      "self-review"
+    ],
+    "source": "cron",
+    "status": "queued",
+    "result": null,
+    "error": null,
+    "steps": [],
+    "cost": null,
+    "retryCount": 0,
+    "createdAt": 1778267172795,
+    "startedAt": null,
+    "finishedAt": null
+  },
+  {
+    "id": "c17abec1-40b8-4eb6-9ab1-6b66a8c76692",
+    "prompt": "Diga apenas: hello world em portugues, em uma linha",
+    "workspace": "/home/jarvis/openclaw-mythos-jarvis/backend",
+    "systemPrompt": null,
+    "maxTurns": 10,
+    "model": null,
+    "tags": [],
+    "source": "api",
+    "status": "queued",
+    "result": null,
+    "error": null,
+    "steps": [],
+    "cost": null,
+    "retryCount": 0,
+    "createdAt": 1778267082192,
+    "startedAt": null,
+    "finishedAt": null
+  }
+]

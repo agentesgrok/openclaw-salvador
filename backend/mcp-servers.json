@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "guimoo": {
+      "type": "stdio",
+      "command": "/opt/node/bin/node",
+      "args": ["/home/openclaw/.claude/mcps/guimoo-mcp/dist/index.js"],
+      "env": { "GUIMOO_API_KEY": "${GUIMOO_API_KEY}" }
+    }
+  }
+}

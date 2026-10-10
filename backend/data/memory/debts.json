@@ -1,0 +1,162 @@
+{
+  "key": "debts",
+  "content": [
+    {
+      "id": 1,
+      "desc": "processedMessages Map sem TTL — cresce infinito",
+      "file": "server.js:86",
+      "severity": "medium",
+      "status": "resolved",
+      "resolvedAt": 1775732260370
+    },
+    {
+      "id": 2,
+      "desc": "sessions Map sem limpeza periódica",
+      "file": "server.js:83",
+      "severity": "medium",
+      "status": "resolved",
+      "resolvedAt": 1775732260370
+    },
+    {
+      "id": 3,
+      "desc": "Skills com porta hardcoded 8080 em check-logs.md",
+      "file": ".claude/skills/ops/check-logs.md",
+      "severity": "low",
+      "status": "resolved",
+      "resolvedAt": 1775732260370
+    },
+    {
+      "id": 4,
+      "desc": "Skill expansion falha silenciosamente sem logar erro",
+      "file": "services/task-runner.js",
+      "severity": "low",
+      "status": "resolved",
+      "resolvedAt": 1775900000000
+    },
+    {
+      "id": 5,
+      "desc": "missionIndex nunca reseta causando comportamento imprevisível",
+      "file": "services/task-runner.js",
+      "severity": "low",
+      "status": "resolved",
+      "resolvedAt": 1775732260370
+    },
+    {
+      "id": 6,
+      "desc": "maxTurns: 5 muito baixo para análises autônomas complexas",
+      "file": "services/task-runner.js",
+      "severity": "medium",
+      "status": "resolved",
+      "resolvedAt": 1775732260370
+    },
+    {
+      "id": 7,
+      "desc": "Sem changelog de mudanças aplicadas pelo self-improve",
+      "file": "data/",
+      "severity": "low",
+      "status": "resolved",
+      "resolvedAt": 1775843400000
+    },
+    {
+      "id": 8,
+      "desc": "resetTime hardcoded (1755644400) no health-checker — check do SDK sempre incorreto",
+      "file": "services/health-checker.js:29",
+      "severity": "high",
+      "status": "resolved",
+      "resolvedAt": 1744250400000
+    },
+    {
+      "id": 9,
+      "desc": "Código morto: generateNaturalResponse, detectCrewAINeeded, detectTaskType nunca chamados",
+      "file": "server.js:671-739",
+      "severity": "medium",
+      "status": "resolved",
+      "resolvedAt": 1744329600000
+    },
+    {
+      "id": 10,
+      "desc": "crypto.randomUUID() no catch externo inconsistente com uuidv4() usado no resto",
+      "file": "server.js:1188",
+      "severity": "low",
+      "status": "resolved",
+      "resolvedAt": 1744329600000
+    },
+    {
+      "id": 11,
+      "desc": "task.steps cresce indefinidamente sem limite durante execução",
+      "file": "services/task-runner.js:279",
+      "severity": "medium",
+      "status": "resolved",
+      "resolvedAt": 1744329600000
+    },
+    {
+      "id": 12,
+      "desc": "Log verboso em cada addToContext polui stdout em produção",
+      "file": "sessionContext.js:37",
+      "severity": "low",
+      "status": "resolved",
+      "resolvedAt": 1744329600000
+    },
+    {
+      "id": 13,
+      "desc": "CORS com origin '*' permite qualquer origem — risco de segurança",
+      "file": "server.js:28",
+      "severity": "high",
+      "status": "resolved",
+      "resolvedAt": 1775907674000
+    },
+    {
+      "id": 14,
+      "desc": "activeConnections Map nunca limpa conexões que não disparam 'disconnect'",
+      "file": "server.js:84",
+      "severity": "medium",
+      "status": "open"
+    },
+    {
+      "id": 15,
+      "desc": "health-checker executa 'ps aux | grep claude' via shell — command injection se input não sanitizado e overhead desnecessário",
+      "file": "services/health-checker.js:23",
+      "severity": "medium",
+      "status": "resolved",
+      "resolvedAt": 1775953769000
+    },
+    {
+      "id": 16,
+      "desc": "health-checker startMonitoring setInterval sem referência — impossível parar monitoramento",
+      "file": "services/health-checker.js:186",
+      "severity": "low",
+      "status": "open"
+    },
+    {
+      "id": 17,
+      "desc": "memory-store append() não tem retry em caso de hash_mismatch (race condition silenciosa)",
+      "file": "services/memory-store.js:47",
+      "severity": "medium",
+      "status": "open"
+    },
+    {
+      "id": 18,
+      "desc": "sessionContext getFormattedContext trunca contexto para 10 msgs mas addToContext guarda 20 — inconsistência",
+      "file": "sessionContext.js:52",
+      "severity": "low",
+      "status": "open"
+    },
+    {
+      "id": 19,
+      "desc": "Endpoint /api/debug/* exposto sem autenticação — vaza dados de sessão em produção",
+      "file": "server.js:559",
+      "severity": "high",
+      "status": "resolved",
+      "resolvedAt": 1744416000000
+    },
+    {
+      "id": 20,
+      "desc": "task-runner _save() síncrono (writeJsonSync) bloqueia event loop em cada operação de task",
+      "file": "services/task-runner.js:104",
+      "severity": "medium",
+      "status": "open"
+    }
+  ],
+  "sha256": "placeholder",
+  "updatedAt": 1744416000000
+}
