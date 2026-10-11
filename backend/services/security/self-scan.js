@@ -5,7 +5,6 @@
 //
 // Filosofia:
 // - Cada check retorna { id, severity, passed, found: [...], details }
-// - Postman cobre via folder 99 com assert "zero issues high"
 // - Cron monitor pode rodar toda semana e alertar se contagem de issues subir
 
 const fs = require('fs-extra');
@@ -15,7 +14,7 @@ const { spawnSync } = require('child_process');
 const SERVER_JS = path.join(__dirname, '../../server.js');
 const PACKAGE_JSON = path.join(__dirname, '../../package.json');
 
-// Endpoints intencionalmente públicos (sem _crmAuth). Ajustar com cuidado.
+// Endpoints intencionalmente públicos (sem requireAuth). Ajustar com cuidado.
 const AUTH_WHITELIST = [
   '/api/health',                    // liveness probe
   '/api/debug/session/:sessionId',  // requireDevMode
@@ -35,9 +34,9 @@ async function checkAuthCoverage() {
     const [, method, route] = m;
     if (AUTH_WHITELIST.includes(route)) continue;
 
-    // Look ahead até 5 linhas pra ver se tem _crmAuth ou requireDevMode
+    // Look ahead até 5 linhas pra ver se tem requireAuth ou requireDevMode
     const ahead = lines.slice(i, i + 6).join('\n');
-    if (ahead.includes('_crmAuth') || ahead.includes('requireDevMode')) continue;
+    if (ahead.includes('requireAuth') || ahead.includes('requireDevMode')) continue;
 
     findings.push({ method: method.toUpperCase(), path: route, line: i + 1 });
   }
@@ -108,26 +107,29 @@ async function checkUploadSizeLimit() {
 function checkEnvMisconfig() {
   const findings = [];
 
-  if (!process.env.WEBHOOK_CRM_SECRET) {
-    findings.push({ key: 'WEBHOOK_CRM_SECRET', reason: 'ausente — _crmAuth retorna 500 em qualquer request' });
-  } else if (process.env.WEBHOOK_CRM_SECRET.length < 32) {
-    findings.push({ key: 'WEBHOOK_CRM_SECRET', reason: `length=${process.env.WEBHOOK_CRM_SECRET.length} (recomendado >= 32 chars, gere com 'openssl rand -hex 32')` });
+  const apiSecret = process.env.API_SECRET || process.env.WEBHOOK_CRM_SECRET;
+  if (!apiSecret) {
+    findings.push({ key: 'API_SECRET', reason: 'ausente — requireAuth retorna 500 em qualquer request' });
+  } else if (apiSecret.length < 32) {
+    findings.push({ key: 'API_SECRET', reason: `length=${apiSecret.length} (recomendado >= 32 chars, gere com 'openssl rand -hex 32')` });
+  }
+  if (!process.env.API_SECRET && process.env.WEBHOOK_CRM_SECRET) {
+    findings.push({ key: 'WEBHOOK_CRM_SECRET', reason: 'nome antigo — renomear para API_SECRET no .env' });
   }
 
   if (!process.env.LLM_PROXY_API_KEY) {
-    findings.push({ key: 'LLM_PROXY_API_KEY', reason: 'ausente — /v1/* cai no fallback WEBHOOK_CRM_SECRET (escopo único pra REST e LLM proxy)' });
+    findings.push({ key: 'LLM_PROXY_API_KEY', reason: 'ausente — /v1/* cai no fallback API_SECRET (escopo único pra REST e LLM proxy)' });
   } else if (process.env.LLM_PROXY_API_KEY.length < 32) {
     findings.push({ key: 'LLM_PROXY_API_KEY', reason: `length=${process.env.LLM_PROXY_API_KEY.length} (recomendado >= 32 chars)` });
   }
 
-  if (process.env.WEBHOOK_CRM_SECRET && process.env.LLM_PROXY_API_KEY
-      && process.env.WEBHOOK_CRM_SECRET === process.env.LLM_PROXY_API_KEY) {
-    findings.push({ key: 'WEBHOOK_CRM_SECRET/LLM_PROXY_API_KEY', reason: 'mesmo valor — escopos colapsados, revogação afeta os 2' });
+  if (apiSecret && process.env.LLM_PROXY_API_KEY && apiSecret === process.env.LLM_PROXY_API_KEY) {
+    findings.push({ key: 'API_SECRET/LLM_PROXY_API_KEY', reason: 'mesmo valor — escopos colapsados, revogação afeta os 2' });
   }
 
   return {
     id: 'env-misconfig',
-    severity: findings.some(f => f.key === 'WEBHOOK_CRM_SECRET') ? 'high' : 'medium',
+    severity: findings.some(f => f.key === 'API_SECRET') ? 'high' : 'medium',
     passed: findings.length === 0,
     found: findings,
     details: 'Verifica secrets fortes e escopos separados (REST vs LLM proxy).',

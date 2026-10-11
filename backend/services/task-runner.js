@@ -78,7 +78,7 @@ function _buildMemoryContext(ctx) {
 const tasks = new Map();
 const queue = [];
 let running = false;
-let _io = null;          // Socket.IO ref (setado pelo startAutonomous)
+let _io = null;          // Socket.IO ref (setado por setIo no server.js)
 let _cooldownUntil = 0;  // timestamp até quando pausar (rate limit)
 let _retryTimer = null;  // timer para retomar fila após cooldown
 
@@ -311,7 +311,7 @@ async function _runTask(task, io) {
   try {
     const queryOptions = {
       maxTurns: task.maxTurns,
-      permissionMode: (task.tags?.includes('auto-pr') || task.tags?.includes('instagram')) ? 'bypassPermissions' : 'acceptEdits',
+      permissionMode: 'acceptEdits',
       abortController: abort,
       cwd: task.workspace,
       model: task.model || process.env.MYTHOS_MODEL || 'claude-opus-4-6',
@@ -450,10 +450,6 @@ async function _runTask(task, io) {
       const changedFiles = _getChangedFiles(task.workspace);
       if (changedFiles.length > 0) entry.changes = changedFiles;
       memory.append('changelog', entry, 100);
-
-      if (task.prompt !== '/auto-commit-pr') {
-        _checkAndCommit(task.workspace);
-      }
     }
   }
 }
@@ -469,121 +465,17 @@ function _getChangedFiles(workspace) {
   } catch { return []; }
 }
 
-function _checkAndCommit(workspace) {
-  try {
-    const { execSync } = require('child_process');
-    const changes = execSync('git status --porcelain', { cwd: workspace, encoding: 'utf8' }).trim();
-    if (changes) {
-      console.log(`📝 Mudanças detectadas após task autônoma — agendando auto-commit-pr`);
-      createTask({
-        prompt: '/auto-commit-pr',
-        workspace,
-        tags: ['autonomous', 'auto-pr'],
-        source: 'cron',
-        maxTurns: 10,
-      });
-    }
-  } catch { /* sem git ou erro — ignora */ }
-}
-
 function _emit(io, taskId, event, data) {
   if (io) io.emit(event, data);
 }
 
-// ── Modo autônomo ──
-
-let autonomousTimer = null;
-
-function startAutonomous(io, intervalMs) {
-  if (autonomousTimer) return;
-  _io = io; // Guarda ref do Socket.IO
-  console.log(`🤖 Autonomous mode: ciclo a cada ${intervalMs / 60000}min`);
-  _scheduleAutonomousTask();
-  autonomousTimer = setInterval(() => {
-    _scheduleAutonomousTask();
-  }, intervalMs);
-}
-
-function stopAutonomous() {
-  if (autonomousTimer) {
-    clearInterval(autonomousTimer);
-    autonomousTimer = null;
-    console.log('🤖 Autonomous mode stopped');
-  }
-}
-
-const LOGS_PATH = process.env.OPENCLAW_LOGS || '/Users/2a/.openclaw/logs';
-const AGENTS_PATH = process.env.CLAUDE_AGENTS_PATH || '/Users/2a/.claude/agents';
-
-const SELF_MISSIONS = [
-  // Diagnóstico
-  '/self-review',
-  '/analyze-logs',
-  // Resolução de débitos (a cada 3 ciclos)
-  'Leia data/memory/debts.json. Escolha o debt aberto de maior severidade. Corrija-o editando o arquivo indicado. Após corrigir, atualize debts.json mudando status para "resolved" e resolvedAt com Date.now(). Teste com node --check.',
-  // Avaliação de skills
-  '/eval-skills',
-  // Diagnóstico profundo
-  '/self-review',
-  `Leia os logs em ${LOGS_PATH}/ e verifique se as skills cobrem os padrões de erro encontrados. Sugira novas skills se necessário.`,
-  // Mais resolução de débitos
-  'Leia data/memory/debts.json. Se todos os debts estão "resolved", analise o código e adicione NOVOS débitos técnicos que encontrar (com id, desc, file, severity, status:"open"). Se houver debts open, resolva o de maior severidade.',
-  // Melhoria contínua
-  '/self-improve',
-  '/analyze-logs',
-  `Verifique os agentes em ${AGENTS_PATH}/. Liste os mais relevantes para melhorar o openclaw-mythos.`,
-];
-
-const OPENCLAW_MISSIONS = [
-  'Analise pkg/providers/ do openclaw. Identifique providers com padrões inconsistentes. Lista priorizada.',
-  'Leia ROADMAP.md e compare com o código atual. Liste: implementado, parcial, pendente.',
-  '/analyze-logs',
-  `Leia os logs em ${LOGS_PATH}/ e sugira melhorias concretas no código Go para reduzir os erros encontrados.`,
-];
-
-let missionIndex = 0;
-const TOTAL_MISSIONS = SELF_MISSIONS.length + OPENCLAW_MISSIONS.length;
-
-function _scheduleAutonomousTask() {
-  // Cooldown ativo — pula ciclo
-  if (_cooldownUntil > Date.now()) {
-    const waitMin = Math.ceil((_cooldownUntil - Date.now()) / 60000);
-    console.log(`⏸️  [mission skip] Rate limit cooldown — ${waitMin}min restantes`);
-    return;
-  }
-
-  const workspace = process.env.OPENCLAW_WORKSPACE || path.join(__dirname, '..');
-  const goPath = process.env.OPENCLAW_GOPATH;
-  let prompt, taskWorkspace, tags;
-
-  if (missionIndex % 3 === 0 || !goPath || !require('fs').existsSync(goPath)) {
-    prompt = SELF_MISSIONS[missionIndex % SELF_MISSIONS.length];
-    taskWorkspace = workspace;
-    tags = ['autonomous', 'self-review'];
-  } else {
-    prompt = OPENCLAW_MISSIONS[missionIndex % OPENCLAW_MISSIONS.length];
-    taskWorkspace = goPath;
-    tags = ['autonomous', 'openclaw-analysis'];
-  }
-
-  missionIndex = (missionIndex + 1) % TOTAL_MISSIONS;
-
-  console.log(`🤖 [mission ${missionIndex}] ${prompt.substring(0, 70)}`);
-  createTask({
-    prompt,
-    workspace: taskWorkspace,
-    tags,
-    source: 'cron',
-    maxTurns: 15,
-  });
-}
+function setIo(io) { _io = io; }
 
 module.exports = {
   createTask,
   getTask,
   listTasks,
   cancelTask,
-  startAutonomous,
-  stopAutonomous,
+  setIo,
   _drainQueue,
 };

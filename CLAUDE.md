@@ -7,9 +7,9 @@
 Duas superfícies:
 
 1. **LLM proxy OpenAI-compatible** em `/v1` (`/v1/models`, `/v1/chat/completions`) — o OpenClaw consome como provider `mythos` (`api: openai-completions`, `baseUrl: http://127.0.0.1:3456/v1`). É o caminho principal hoje.
-2. **Chat Socket.IO** (`send_message`, `message_complete`, `processing_step`, …) + REST utilitário (`/api/tasks`, `/api/sessions`, `/api/upload`, `/api/export`, `/api/skills/run`, `/api/security/scan`).
+2. **Chat Socket.IO** (`send_message`, `message_complete`, `processing_step`, …) + REST utilitário (`/api/tasks`, `/api/sessions`, `/api/upload`, `/api/export`, `/api/security/scan`).
 
-> **Histórico (2026-10-11):** o scraper TaxLife (`services/scrape/taxlife/`) saiu do backend e virou projeto independente, publicado em repositório próprio no GitHub (`taxlife-scraper`, com CLI e `puppeteer` próprios). O `server.js` não tem mais rotas `/api/scrape/*`. Não recriar aqui.
+> **Histórico (2026-10-11):** limpeza para deixar o backend agnóstico de domínio. Saíram: o scraper TaxLife (`services/scrape/taxlife/` → repo próprio `taxlife-scraper` no GitHub), as rotas Instagram/LinkedIn (`/api/translate-instagram`, `/api/instagram-stories`, `/api/translate-image`), o runner de skills (`/api/skills/run`, `services/skills/`), o modo autônomo do task-runner (`/api/autonomous/*`, missões, auto-commit-PR) e o utilitário `tools/logs`. A auth REST passou a `API_SECRET` / `requireAuth` (nome antigo `WEBHOOK_CRM_SECRET` segue aceito como fallback). Não recriar nada disso aqui.
 >
 > **Histórico (2026-08-17):** o CRM Lucro Ativo (Sheets/handlers/automations/crons), o pipeline Read.ai, os bridges (Gmail/Zoho/Notion/NotebookLM), o signer, o WhatsApp inbound e os scripts de backfill foram **removidos de propósito** deste repositório. Não recriar nem referenciar `services/crm/`, `services/readai/`, `services/bridges/`. O snapshot pré-remoção está no commit `43e058e`.
 
@@ -33,19 +33,18 @@ curl -s -m 200 http://127.0.0.1:3456/v1/chat/completions -H "Authorization: Bear
 | LLM proxy `/v1` (OpenAI-compatible → Claude CLI) | `backend/services/llm-proxy/openai-compat.js` |
 | Spawn do CLI Claude + semáforo/memória | `backend/claude-query.js` |
 | Sessões / contexto | `backend/sessionContext.js` |
-| Tarefas assíncronas / modo autônomo | `backend/services/task-runner.js`, `backend/data/tasks.json` |
+| Fila de tarefas assíncronas (`/api/tasks`) | `backend/services/task-runner.js`, `backend/data/tasks.json` |
 | Memória persistente | `backend/services/memory-store.js`, `backend/data/memory/` |
 | Health check | `backend/services/health-checker.js` |
-| Skills runner REST (whitelist `SKILLS_ALLOWED`) | `backend/services/skills/run-skill.js` |
 | Self-scan de segurança | `backend/services/security/self-scan.js` |
-| Skills em Markdown (expansão `/nome` no task-runner) | `backend/.claude/skills/**` |
+| Skills em Markdown (expansão `/nome` no task-runner; pasta opcional, hoje não existe) | `backend/.claude/skills/**` |
 | Testes (jest) | `backend/tests/` |
 
 ## Comandos
 
 ```bash
 cd backend && npm install
-cp .env.example .env    # preencher WEBHOOK_CRM_SECRET e LLM_PROXY_API_KEY (openssl rand -hex 32)
+cp .env.example .env    # preencher API_SECRET e LLM_PROXY_API_KEY (openssl rand -hex 32)
 npm run dev             # nodemon
 npm start               # produção (systemd/pm2 por fora)
 npm test
@@ -56,8 +55,8 @@ Porta default **3456** (`PORT`). CORS/Socket.IO: `SOCKET_IO_CORS_ORIGIN`.
 
 ## Auth
 
-- `/api/*` (exceto `/api/health` e `/api/debug/*` em dev): `Authorization: Bearer $WEBHOOK_CRM_SECRET` — função `_crmAuth` no topo do `server.js` (nome histórico; é a auth genérica REST).
-- `/v1/*`: `Authorization: Bearer $LLM_PROXY_API_KEY` (fallback `WEBHOOK_CRM_SECRET`).
+- `/api/*` (exceto `/api/health` e `/api/debug/*` em dev): `Authorization: Bearer $API_SECRET` — função `requireAuth` no topo do `server.js`. `WEBHOOK_CRM_SECRET` é o nome antigo e ainda funciona como fallback.
+- `/v1/*`: `Authorization: Bearer $LLM_PROXY_API_KEY` (fallback `API_SECRET`).
 
 ## Convenções
 
@@ -67,8 +66,6 @@ Porta default **3456** (`PORT`). CORS/Socket.IO: `SOCKET_IO_CORS_ORIGIN`.
 - Não commitar `backend/.env`.
 - Ao mudar rota/env visível, atualizar `.env.example` e este arquivo.
 
-## Débitos conhecidos (fora do escopo da limpeza de 2026-08-17)
+## Débitos conhecidos
 
-- `/api/translate-instagram`, `/api/instagram-stories`, `/api/translate-image` e `task-runner.js` (`LOGS_PATH`, `AGENTS_PATH`) hardcodam paths de macOS (`/Users/2a/...`) — mortos nesta máquina Linux.
 - `npm audit` acusa highs em `socket.io`/`ws`/`@anthropic-ai/claude-code` — atualizar deps.
-- `services/skills/run-skill.js` whitelist cita skills externas (`~/.claude/skills/*`) que podem não existir aqui.

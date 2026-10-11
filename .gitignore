@@ -1,22 +1,22 @@
 # dependencies
 node_modules/
-/.pnp
-.pnp.js
+
+# env / secrets
+/.env
+backend/.env
+backend/.env.bak-*
+backend/.secrets/
 
 # testing
 /coverage
+backend/coverage/
+backend/.jest-cache/
 
-# production
+# build
 /build
 /dist
 
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -27,39 +27,6 @@ yarn-error.log*
 *.swp
 *.swo
 
-# OS generated files
+# OS
+.DS_Store
 Thumbs.db
-.claude-flow/metrics/*
-.swarm/memory.db
-backend/.env
-backend/.env.bak-*
-
-# Postman — arquivos voláteis do monitor (logs, dedup state)
-postman/.monitor.log
-postman/.monitor.last-run
-postman/.monitor.last-alert
-# Postman performance baselines — JSONs por data são regerados
-postman/baselines/*.json
-!postman/baselines/.gitkeep
-# Postman perf-reports e security-reports (autocannon JSON, ZAP HTML/JSON)
-postman/perf-reports/*.json
-postman/security-reports/*.html
-postman/security-reports/*.json
-# Monitor opensign (debounce/log)
-postman/.monitor-opensign.log
-postman/.monitor-opensign.last-run
-postman/.monitor-opensign.last-alert
-# Jest
-backend/coverage/
-backend/.jest-cache/
-
-# Read.ai OAuth tokens (sensitive)
-backend/.secrets/
-
-# Zoho OAuth — .env raiz + cache do access token + lock dirs (credenciais)
-/.env
-zohomail-authentication/.zoho-token
-zohomail-authentication/.zoho-token.lock
-zohomail-authentication/.zoho-token.lock.d/
-zohomail-authentication/.zoho-token.tmp
-

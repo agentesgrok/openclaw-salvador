@@ -11,7 +11,7 @@
 //   POST /v1/chat/completions    — chat completion (stream SSE ou JSON), Bearer auth
 //
 // Env:
-//   LLM_PROXY_API_KEY          — Bearer esperado (fallback: WEBHOOK_CRM_SECRET)
+//   LLM_PROXY_API_KEY          — Bearer esperado (fallback: API_SECRET)
 //   LLM_PROXY_MODELS           — ids expostos, separados por vírgula
 //                                (default: claude-sonnet-5,claude-opus-4-8,claude-opus-4-7)
 //   LLM_PROXY_DEFAULT_MODEL    — usado quando o cliente pede um id desconhecido/vazio
@@ -61,7 +61,7 @@ function resolveModel(requested) {
 }
 
 function auth(req, res, next) {
-  const expected = process.env.LLM_PROXY_API_KEY || process.env.WEBHOOK_CRM_SECRET;
+  const expected = process.env.LLM_PROXY_API_KEY || process.env.API_SECRET || process.env.WEBHOOK_CRM_SECRET;
   if (!expected) {
     return res.status(500).json({ error: { message: 'LLM_PROXY_API_KEY nao configurado', type: 'server_error' } });
   }
