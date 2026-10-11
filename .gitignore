@@ -63,6 +63,3 @@ zohomail-authentication/.zoho-token.lock
 zohomail-authentication/.zoho-token.lock.d/
 zohomail-authentication/.zoho-token.tmp
 
-
-# Projeto separado (repo git próprio, publicado à parte)
-taxlife/
