@@ -8,6 +8,9 @@
     "dev": "nodemon server.js",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:e2e": "node tests/e2e/run.js",
+    "test:e2e:preflight": "node tests/e2e/run.js --only=preflight",
+    "test:e2e:backend": "node tests/e2e/run.js --skip-gateway",
     "security:self-scan": "curl -s -X POST http://localhost:3456/api/security/scan -H \"Authorization: Bearer $(grep -E '^(API_SECRET|WEBHOOK_CRM_SECRET)=' .env | head -1 | cut -d= -f2-)\" | python3 -m json.tool"
   },
   "dependencies": {
@@ -27,7 +30,8 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "/tests/e2e/"
     ],
     "testMatch": [
       "**/tests/**/*.test.js"

@@ -50,6 +50,10 @@ Esse era só o último erro da cadeia, e a causa real estava no backend.
 
 ## Como diagnosticar se acontecer de novo
 
+Atalho: tudo abaixo (e mais a cadeia completa gateway → mythos → Claude → Guimoo) em um comando:
+`cd ~/openclaw-mythos/backend && npm run test:e2e` — a coluna `[hint]` de cada FAIL aponta a camada
+(`backend down`, `gateway down`, `fallback happened`, `whatsapp disconnected`…). Passo a passo manual:
+
 ```bash
 # 1. O WhatsApp está conectado?
 openclaw channels status

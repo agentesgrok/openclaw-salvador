@@ -30,3 +30,6 @@ yarn-error.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# lock do e2e real (tests/e2e)
+backend/data/e2e.lock

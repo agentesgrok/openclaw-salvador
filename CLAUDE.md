@@ -15,7 +15,7 @@ Duas superfícies:
 
 ## MCP no agente (WhatsApp) — como funciona
 
-O proxy `/v1` **ignora** `tools` do request OpenAI, então `openclaw mcp add` no gateway não dá ferramenta ao agente. MCP entra **aqui**: `LLM_PROXY_MCP_CONFIG=mcp-servers.json` → o CLI sobe com `--mcp-config … --strict-mcp-config --tools "<built-ins da allowlist>"` e executa as tools dentro do próprio turno (precisa `LLM_PROXY_MAX_TURNS` > 1). `LLM_PROXY_ALLOWED_TOOLS` é allowlist real — o proxy não usa `bypassPermissions` (quem fala com ele é gente no WhatsApp). Hoje: MCP `guimoo` (Guimoo CRM, `~/.claude/mcps/guimoo-mcp`), **30 tools**: as 17 de leitura + as 13 de escrita (`create_*`, `update_*`, `delete_negociacao`, `add_tag`, `remove_tag`, `upsert_campo_negociacao`, `create_acao`, `update_acao`), liberadas pelo dono em 2026-09-21. Só o escape hatch `guimoo_request` fica de fora de propósito. `LLM_PROXY_TOOLS_GUIDANCE` anexa regras de uso ao aviso de ferramentas (orientação, não trava). Passo a passo completo: `MCP-NO-AGENTE.md`. Mudou `.env`/`mcp-servers.json` → `systemctl --user restart mythos-backend.service`.
+O proxy `/v1` **ignora** `tools` do request OpenAI, então `openclaw mcp add` no gateway não dá ferramenta ao agente. MCP entra **aqui**: `LLM_PROXY_MCP_CONFIG=mcp-servers.json` → o CLI sobe com `--mcp-config … --strict-mcp-config --tools "<built-ins da allowlist>"` e executa as tools dentro do próprio turno (precisa `LLM_PROXY_MAX_TURNS` > 1). `LLM_PROXY_ALLOWED_TOOLS` é allowlist real — o proxy não usa `bypassPermissions` (quem fala com ele é gente no WhatsApp). Hoje: MCP `guimoo` (Guimoo CRM, `~/.claude/mcps/guimoo-mcp`), **30 tools**: as 17 de leitura + as 13 de escrita (`create_*`, `update_*`, `delete_negociacao`, `add_tag`, `remove_tag`, `upsert_campo_negociacao`, `create_acao`, `update_acao`), liberadas pelo dono em 2026-09-21. Só o escape hatch `guimoo_request` fica de fora de propósito. `LLM_PROXY_TOOLS_GUIDANCE` anexa regras de uso ao aviso de ferramentas (orientação, não trava). Mudou `.env`/`mcp-servers.json` → `systemctl --user restart mythos-backend.service` e depois `npm run test:e2e`.
 
 Smoke sem WhatsApp:
 
@@ -60,7 +60,21 @@ Porta default **3456** (`PORT`). CORS/Socket.IO: `SOCKET_IO_CORS_ORIGIN`.
 ./deploy/install-service.sh --dry-run  # só mostra o unit
 ```
 
-O script calcula o `WorkingDirectory` a partir da própria pasta do repo, então **o nome/caminho da pasta não importa** (`openclaw-mythos`, `openclaw-salvador`, VPS nova…). Renomeou ou moveu a pasta → rode o script de novo antes de qualquer restart; foi a causa do incidente de 2026-10-10 (`RENOMEADO.md`). Mudou `.env`/`mcp-servers.json`/código → `systemctl --user restart mythos-backend.service`.
+O script calcula o `WorkingDirectory` a partir da própria pasta do repo, então **o nome/caminho da pasta não importa** (`openclaw-mythos`, `openclaw-salvador`, VPS nova…). Renomeou ou moveu a pasta → rode o script de novo antes de qualquer restart; foi a causa do incidente de 2026-10-10 (`RENOMEADO.md`). Mudou `.env`/`mcp-servers.json`/código → `systemctl --user restart mythos-backend.service` e depois o e2e abaixo.
+
+## Teste e2e real (`backend/tests/e2e/`)
+
+Prova que **o agente do WhatsApp continua funcionando** depois de restart/deploy/mudança: gateway OpenClaw → `/v1` do mythos → Claude CLI → MCP Guimoo. Roda contra a **produção** (3456), gasta tokens de verdade e não envia nada ao WhatsApp (usa `openclaw agent` numa sessão descartável `agent:main:e2e-<ts>`, apagada no fim).
+
+```bash
+cd backend
+npm run test:e2e:preflight   # ~10 s, sem token: serviços, portas, auth, chaves iguais gateway↔backend, CLI, MCP no disco, WhatsApp
+npm run test:e2e:backend     # + POST /v1 direto: texto, stream SSE, Guimoo read-only (list_funis → FUNIS=<n>)
+npm run test:e2e             # + turno completo pelo gateway (texto e Guimoo), checando que NÃO caiu no fallback Gemini
+npm run test:e2e -- --json   # relatório JSON (stdout)
+```
+
+Exit `0` ok · `1` algo quebrou (a coluna `[hint]` diz a camada: `backend down`, `auth mismatch`, `CLI broken`, `MCP broken`, `gateway down`, `fallback happened`, `whatsapp disconnected`) · `2` inconclusivo (slot do CLI ocupado por usuário real, outra execução, orçamento). Nunca roda em paralelo: `MAX_CLAUDE_PROCESSES=1` → um turno de teste ocupa o único slot. Não está no `npm test` (jest) de propósito. Não agendar: sob demanda.
 
 ## Auth
 

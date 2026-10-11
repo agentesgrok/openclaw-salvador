@@ -65,14 +65,15 @@ function releaseSlot() {
   }
 }
 
-// Polling: drenar waitQueue quando memória cair sem que um processo termine
+// Polling: drenar waitQueue quando memória cair sem que um processo termine.
+// unref: não segura o processo vivo sozinho (jest/scripts encerram normalmente).
 setInterval(() => {
   while (waitQueue.length > 0 && activeProcesses < MAX_PROCESSES && getMemoryUsagePercent() <= MEMORY_THROTTLE) {
     const next = waitQueue.shift();
     activeProcesses++;
     next.resolve();
   }
-}, 10000);
+}, 10000).unref();
 
 // ── Query ──
 
@@ -116,6 +117,20 @@ async function* _spawnQuery({ prompt, options }) {
     env: { ...process.env, PATH: process.env.PATH },
     stdio: ['ignore', 'pipe', 'pipe'],
     cwd: options.cwd || process.cwd(),
+  });
+
+  // Spawn falhou (ENOENT no binário/cwd etc.): vira um result de erro em vez de
+  // um 'error' não tratado que derrubaria o servidor inteiro.
+  child.on('error', (err) => {
+    lineQueue.push({
+      type: 'result',
+      subtype: 'error',
+      is_error: true,
+      error: `spawn failed: ${err.message}`,
+      result: `spawn failed: ${err.message}`,
+    });
+    done = true;
+    if (resolve) { resolve(); resolve = null; }
   });
 
   // Handle abort
