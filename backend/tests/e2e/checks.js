@@ -59,6 +59,7 @@ async function preflight(ctx) {
   }, { gate: 'preflight' });
 
   await step('pre.slot', 'preflight', async () => {
+    if (ctx.active == null) { ctx.gates.slot = false; return { skip: 'pre.health falhou' }; }
     if (ctx.active !== 0) {
       ctx.blocked = `slot do CLI ocupado (activeProcesses=${ctx.active}) — alguém está usando o agente; rode de novo em 1 min`;
       throw fail(ctx.blocked, 'throttled');
