@@ -912,40 +912,6 @@ app.post('/api/autonomous/stop', (req, res) => {
   res.json({ success: true });
 });
 
-// ─── Scrapers (services/scrape/*) ─────────────────────────────────
-// TaxLife — login local na plataforma "Comunidade O Novo Tributário".
-// Smoke endpoint: valida credenciais, salva storage_state, retorna URL final.
-app.post('/api/scrape/taxlife/login-test', async (req, res) => {
-  if (!_crmAuth(req, res)) return;
-  try {
-    const result = await require('./services/scrape/taxlife').healthcheck();
-    res.json(result);
-  } catch (err) {
-    res.status(500).json({ ok: false, error: err.message });
-  }
-});
-// Inventário Pass 1: mapeia áreas raiz (tracks, news, etc).
-// Body: { areas?: string[], includeText?: boolean, cardLimit?: number }
-app.post('/api/scrape/taxlife/inventario', async (req, res) => {
-  if (!_crmAuth(req, res)) return;
-  try {
-    const result = await require('./services/scrape/taxlife').inventarioRaiz(req.body || {});
-    res.json(result);
-  } catch (err) {
-    res.status(500).json({ ok: false, error: err.message });
-  }
-});
-// Inventário Pass 2: aprofunda em hrefs específicos (ex: lista de trilhas).
-// Body: { hrefs: string[], includeText?: boolean, maxHrefs?: number, textCap?: number }
-app.post('/api/scrape/taxlife/aprofundar', async (req, res) => {
-  if (!_crmAuth(req, res)) return;
-  try {
-    const result = await require('./services/scrape/taxlife').aprofundarHrefs(req.body || {});
-    res.json(result);
-  } catch (err) {
-    res.status(500).json({ ok: false, error: err.message });
-  }
-});
 // ── Self-scan de segurança (auth coverage, stack trace leak, env misconfig, npm audit, upload limits) ──
 // Não substitui DAST (ZAP) nem SAST (Semgrep) — é camada interna que conhece o próprio código.
 app.post('/api/security/scan', async (req, res) => {

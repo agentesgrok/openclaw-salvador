@@ -9,6 +9,8 @@ Duas superfícies:
 1. **LLM proxy OpenAI-compatible** em `/v1` (`/v1/models`, `/v1/chat/completions`) — o OpenClaw consome como provider `mythos` (`api: openai-completions`, `baseUrl: http://127.0.0.1:3456/v1`). É o caminho principal hoje.
 2. **Chat Socket.IO** (`send_message`, `message_complete`, `processing_step`, …) + REST utilitário (`/api/tasks`, `/api/sessions`, `/api/upload`, `/api/export`, `/api/skills/run`, `/api/security/scan`).
 
+> **Histórico (2026-10-11):** o scraper TaxLife saiu do backend e virou projeto independente em `taxlife/` (repo git próprio, ignorado por este repo via `.gitignore`, com CLI e `puppeteer` próprios). O `server.js` não tem mais rotas `/api/scrape/*`.
+>
 > **Histórico (2026-08-17):** o CRM Lucro Ativo (Sheets/handlers/automations/crons), o pipeline Read.ai, os bridges (Gmail/Zoho/Notion/NotebookLM), o signer, o WhatsApp inbound e os scripts de backfill foram **removidos de propósito** deste repositório. Não recriar nem referenciar `services/crm/`, `services/readai/`, `services/bridges/`. O snapshot pré-remoção está no commit `43e058e`.
 
 ## MCP no agente (WhatsApp) — como funciona
@@ -37,7 +39,6 @@ curl -s -m 200 http://127.0.0.1:3456/v1/chat/completions -H "Authorization: Bear
 | Skills runner REST (whitelist `SKILLS_ALLOWED`) | `backend/services/skills/run-skill.js` |
 | Self-scan de segurança | `backend/services/security/self-scan.js` |
 | Skills em Markdown (expansão `/nome` no task-runner) | `backend/.claude/skills/**` |
-| Scraper TaxLife (login/inventário/extração; requer `puppeteer` à parte) | `backend/services/scrape/taxlife/` |
 | Utilitário de logs do openclaw (avulso) | `backend/tools/logs/openclaw-logs.py` |
 | Testes (jest) | `backend/tests/` |
 
