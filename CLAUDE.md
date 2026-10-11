@@ -74,7 +74,22 @@ npm run test:e2e             # + turno completo pelo gateway (texto e Guimoo), c
 npm run test:e2e -- --json   # relatório JSON (stdout)
 ```
 
-Exit `0` ok · `1` algo quebrou (a coluna `[hint]` diz a camada: `backend down`, `auth mismatch`, `CLI broken`, `MCP broken`, `gateway down`, `fallback happened`, `whatsapp disconnected`) · `2` inconclusivo (slot do CLI ocupado por usuário real, outra execução, orçamento). Nunca roda em paralelo: `MAX_CLAUDE_PROCESSES=1` → um turno de teste ocupa o único slot. Não está no `npm test` (jest) de propósito. Não agendar: sob demanda.
+Exit `0` ok · `1` algo quebrou (a coluna `[hint]` diz a camada: `backend down`, `auth mismatch`, `CLI broken`, `MCP broken`, `gateway down`, `fallback happened`, `whatsapp disconnected`) · `2` inconclusivo (slot do CLI ocupado por usuário real, outra execução, orçamento). Nunca roda em paralelo: `MAX_CLAUDE_PROCESSES=1` → um turno de teste ocupa o único slot. Não está no `npm test` (jest) de propósito. Não agendar: sob demanda (quem o agenda é a rotina de update abaixo).
+
+## Update semanal do OpenClaw e do CLI do Claude (`deploy/openclaw-update.sh`)
+
+Timer systemd de usuário `openclaw-update.timer` (domingo 08:00 UTC = 05:00 BRT, jitter 15 min) roda `deploy/openclaw-update.sh`: posse do pacote → versão `latest` do npm **com ≥ 7 dias** de publicação → `openclaw backup create --verify` em `~/.openclaw-backups/` (mantém 6) → `npm run test:e2e:preflight` → **`openclaw update` nativo** (staging com o gateway antigo no ar; só o passo final reinicia) → `doctor --fix` / `--post-upgrade` / health / WhatsApp → **`npm run test:e2e`** → se FAIL, **rollback** (`openclaw update --tag <anterior>`; se recusar por migração, restaura o backup + `npm i -g openclaw@<anterior>`) → mesmo portão para o `@anthropic-ai/claude-code` do backend (`npm install` + restart + `test:e2e:backend`, volta se falhar; o `package-lock` alterado fica para commitar) → **aviso no WhatsApp** (`NOTIFY_TO`) → `~/.openclaw-backups/last-run.json` + `runs/<ts>.log`.
+
+```bash
+./deploy/openclaw-update.sh --check          # só compara versões (sem efeito)
+./deploy/openclaw-update.sh --dry-run --now  # posse + backup real + update --dry-run; não aplica
+./deploy/openclaw-update.sh --now            # aplica agora ignorando os 7 dias (supervisionado)
+./deploy/install-update-timer.sh             # (re)arma o timer; --dry-run mostra os units
+journalctl --user -u openclaw-update         # logs das execuções pelo timer
+systemctl --user disable --now openclaw-update.timer   # desligar
+```
+
+Config em `~/.config/openclaw-update.env` (modelo `deploy/openclaw-update.env.example`). Regras: nunca rodar como root; auto-updater embutido do OpenClaw fica **desligado** (não faz backup); um `openclaw update` leva **10+ min** na validação — não envolver em `timeout` curto. Rodar `openclaw update cleanup --dry-run` de vez em quando para ver restos de staging em `/opt/node/lib/node_modules/.openclaw.*`.
 
 ## Auth
 
