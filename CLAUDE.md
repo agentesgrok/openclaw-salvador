@@ -53,6 +53,15 @@ npm run security:self-scan
 
 Porta default **3456** (`PORT`). CORS/Socket.IO: `SOCKET_IO_CORS_ORIGIN`.
 
+## Deploy (systemd de usuário)
+
+```bash
+./deploy/install-service.sh            # grava ~/.config/systemd/user/mythos-backend.service e (re)inicia
+./deploy/install-service.sh --dry-run  # só mostra o unit
+```
+
+O script calcula o `WorkingDirectory` a partir da própria pasta do repo, então **o nome/caminho da pasta não importa** (`openclaw-mythos`, `openclaw-salvador`, VPS nova…). Renomeou ou moveu a pasta → rode o script de novo antes de qualquer restart; foi a causa do incidente de 2026-10-10 (`RENOMEADO.md`). Mudou `.env`/`mcp-servers.json`/código → `systemctl --user restart mythos-backend.service`.
+
 ## Auth
 
 - `/api/*` (exceto `/api/health` e `/api/debug/*` em dev): `Authorization: Bearer $API_SECRET` — função `requireAuth` no topo do `server.js`. `WEBHOOK_CRM_SECRET` é o nome antigo e ainda funciona como fallback.
