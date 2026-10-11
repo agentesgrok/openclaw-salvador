@@ -53,8 +53,10 @@ async function preflight(ctx) {
     const c = r.json?.checks;
     if (!c || !c.process_throttle || !c.claude_code_sdk) throw fail(`/api/health sem o formato esperado (status ${r.status})`, 'backend down');
     if (c.claude_code_sdk.status === 'error') throw fail(`claude_code_sdk: ${c.claude_code_sdk.message || 'error'}`, 'CLI broken');
-    if (c.process_throttle.throttled) throw fail(`backend throttled: ${c.process_throttle.message}`, 'throttled');
     ctx.active = c.process_throttle.activeProcesses;
+    // throttled por memória do host = problema real; throttled só por slot ocupado (1/1) é tráfego → pre.slot trata (exit 2)
+    const memPct = Number(c.process_throttle.memoryPercent), memMax = Number(c.process_throttle.throttleThreshold);
+    if (c.process_throttle.throttled && memPct > memMax) throw fail(`backend throttled por memória: ${c.process_throttle.message}`, 'throttled');
     return { reason: `${r.json.status}; ${c.process_throttle.message}` };
   }, { gate: 'preflight' });
 

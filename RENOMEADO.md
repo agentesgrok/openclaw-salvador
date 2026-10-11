@@ -154,6 +154,9 @@ curl -s -m 120 http://127.0.0.1:3456/v1/chat/completions \
 
 ## Pendências / pontos de atenção
 
+- **Backup do dia 10 não existe mais** (`~/Backups/openclaw/*.tar.gz` sumiu do disco). Desde 2026-10-11 a rotina
+  `deploy/openclaw-update.sh` cria backups verificados em `~/.openclaw-backups/` antes de cada update (mantém 6),
+  e o procedimento manual desta página foi substituído por `./deploy/openclaw-update.sh --now` (ver `CLAUDE.md`).
 - **Gemini sem cota:** o modelo reserva não está funcionando. Se o backend cair de novo, não há fallback útil.
   Vale revisar o plano/billing do Google ou trocar o fallback.
 - **Sessão de DM compartilhada:** as conversas privadas da Bianca e do Salvador caem na mesma sessão
