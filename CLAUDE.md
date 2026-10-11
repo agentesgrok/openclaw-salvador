@@ -39,7 +39,6 @@ curl -s -m 200 http://127.0.0.1:3456/v1/chat/completions -H "Authorization: Bear
 | Skills runner REST (whitelist `SKILLS_ALLOWED`) | `backend/services/skills/run-skill.js` |
 | Self-scan de segurança | `backend/services/security/self-scan.js` |
 | Skills em Markdown (expansão `/nome` no task-runner) | `backend/.claude/skills/**` |
-| Utilitário de logs do openclaw (avulso) | `backend/tools/logs/openclaw-logs.py` |
 | Testes (jest) | `backend/tests/` |
 
 ## Comandos
